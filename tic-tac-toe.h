@@ -13,7 +13,7 @@ class O_Player_Piece : public sf::circleShape
 class X_Player_Piece : public sf::rectangleShape
 {
     public:
-    X_Player_Piece(const sf::color &c, sf::Vector2f &size) : sf::rectangleShape(size)
+    X_Player_Piece(const sf::color &c, sf::Vector2f &size, sf::Vector2f &pos) : sf::rectangleShape(size)
     {
         this->setFillColor(c);
         this->setPosition(pos);
@@ -49,13 +49,19 @@ class Player
 
 int main()
 {
-    double row1 = ?;
-    double row2 = ?;
-    double row3 = ?;
-    double column1 = ?;
-    double column2 = ?;
-    double coulumn3 = ?;
+    //double row1 = ;
+    //double row2 = ;
+    //double row3 = ;
+    //double column1 = ;
+    //double column2 = ;
+    //double coulumn3 = ;
     
-    sf::RenderWindow window(sf::videoMode(500,500), "SFML Works!")
+    sf::RenderWindow window(sf::videoMode(500,500), "Tic Tac Toe!")
+    
+    O_Player_Piece O1(50.f, sf::Color::Blue, sf::vector2f(100,100));
+    X_Player_Piece
+    
+    window.draw(O1);
+    
         
 }
