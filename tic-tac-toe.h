@@ -56,12 +56,11 @@ int main()
     //double column2 = ;
     //double coulumn3 = ;
     
-    sf::RenderWindow window(sf::videoMode(500,500), "Tic Tac Toe!")
+    sf::RenderWindow window(sf::videoMode(1000,1000), "Tic Tac Toe!")
     
-    O_Player_Piece O1(50.f, sf::Color::Blue, sf::vector2f(100,100));
-    X_Player_Piece
+    O_Player_Piece O1(100.f, sf::Color::Blue, sf::Vector2f(100,100));
+    X_Player_Piece X1(sf::Color::Red, sf::Vector2f(100,100), sf::Vector(800, 800));
     
     window.draw(O1);
-    
-        
+    window.draw(X1);        
 }
