@@ -62,5 +62,7 @@ int main()
     X_Player_Piece X1(sf::Color::Red, sf::Vector2f(100,100), sf::Vector(800, 800));
     
     window.draw(O1);
-    window.draw(X1);        
+    window.draw(X1);  
+    
+    return 0;
 }
