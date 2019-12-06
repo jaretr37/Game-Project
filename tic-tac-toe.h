@@ -65,4 +65,109 @@ int main()
     window.draw(X1);  
     
     return 0;
+    
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Player.h
+
+#include <SFML/Graphics.hpp>
+#include<iostream>
+
+class Player : public sf::RectangleShape
+{
+public:
+	Player(sf::Vector2f &size, const sf::Color &myColor, sf::Vector2f &pos);
+};
+	
+
+//Player.cpp
+
+#include"Player.h"
+
+Player::Player(sf::Vector2f &size, const sf::Color &myColor, sf::Vector2f &pos) : sf::RectangleShape(size)
+{
+	
+	this->setFillColor(myColor);
+	this->setPosition(pos);
+}
+
+
+//MAIN.cpp
+
+#include"Player.h"
+
+int main()
+{
+	sf::RenderWindow window(sf::VideoMode(1800, 1800), "TAG!!!!! THE GOAL: Is for the Green cube to touch the Blue cube");
+
+	Player player1(*(new sf::Vector2f(window.getSize().x / 50, window.getSize().y / 50)), sf::Color::Green, *(new sf::Vector2f(0, window.getSize().y / 2)));
+
+	Player player2(*(new sf::Vector2f(window.getSize().x / 50, window.getSize().y / 50)), sf::Color::Blue, *(new sf::Vector2f(1762, window.getSize().y / 2)));
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+
+		window.clear();
+
+		window.draw(player1);
+		window.draw(player2);
+
+		window.display();
+
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		//Player 1
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		{
+			player1.move(0, -1);
+
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		{
+			player1.move(-1, 0);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			player1.move(1, 0);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		{
+			player1.move(0, 1);
+		}
+
+		//Player 2
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		{
+			player2.move(0, -1);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			player2.move(-1, 0);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			player2.move(1, 0);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		{
+			player2.move(0, 1);
+		}
+
+		if (player1.getGlobalBounds().intersects(player2.getGlobalBounds()))
+		{
+
+			player1.setPosition(0, window.getSize().y / 2);
+			player2.setPosition(1762, window.getSize().y / 2);
+		}
+
+	}
+	return 0;
+}
+
